@@ -160,7 +160,7 @@
     </main>
   </div>
 
-  <!-- === FIREBASE & AUTH SCRIPT (FINAL PERMANENT FIX V2) === -->
+  <!-- === FIREBASE & AUTH SCRIPT (FINAL PERMANENT FIX V4 - COOKIE STORAGE) === -->
   <script type="module">
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
@@ -186,7 +186,8 @@
       GoogleAuthProvider,
       signInWithRedirect,
       signOut,
-      getRedirectResult
+      setPersistence,
+      browserSessionPersistence // CRITICAL IMPORT
     } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
@@ -216,26 +217,25 @@
     if (authContainerMobile) authContainerMobile.innerHTML = spinnerHTML;
 
     if (!firebaseConfig || !firebaseConfig.apiKey) {
-       console.error("Firebase config is missing. Please paste it from the Firebase console.");
-       const errorMsg = `<span class="text-xs text-red-400">Auth Error</span>`;
+       const errorMsg = `<span class="text-xs text-red-400">Auth Setup Error: Config Missing.</span>`;
        if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
        if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
+       console.error("Firebase config is missing or invalid. Cannot initialize Auth.");
     } else {
         try {
           app = initializeApp(firebaseConfig);
           auth = getAuth(app);
           db = getFirestore(app);
           setLogLevel('Debug');
-          
-          // Check for redirect result immediately (this is the key to catching the session)
-          getRedirectResult(auth)
+
+          // CRITICAL FIX: Set session persistence to use cookies instead of local storage
+          // This forces the session to be checked and persisted reliably during redirects.
+          setPersistence(auth, browserSessionPersistence)
             .then(() => {
-              // Result handled internally by Firebase; onAuthStateChanged will handle UI update
+                console.log("Persistence set to browserSessionPersistence (cookies).");
             })
             .catch((error) => {
-              console.error("Error during initial redirect check:", error);
-              // On error, let the listener decide the final state
-              updateUI(auth.currentUser);
+                console.error("Error setting persistence:", error);
             });
           
         } catch (e) {
@@ -308,6 +308,7 @@
     if (auth) { // Only attach listener if auth is initialized
         onAuthStateChanged(auth, (user) => {
           // This listener is the ultimate source of truth for the session state.
+          // It fires immediately after the persistence type is set and checks for a session.
           updateUI(user); 
         });
     } else {
@@ -317,6 +318,7 @@
   </script>
 </body>
 </html>
+
 
 
 
