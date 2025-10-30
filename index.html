@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>K.J. DIGITA - Where Code Creates Impact</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#067ff9",
+            "background-light": "#f5f7f8",
+            "background-dark": "#0f1923",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"],
+            "heading": ["Montserrat", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <!-- Custom Styles -->
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+    .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-300">
+  <div class="relative flex min-h-screen w-full flex-col">
+    <!-- Top Navigation Bar -->
+    <header class="absolute top-0 left-0 right-0 z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="flex h-20 items-center justify-between border-b border-white/10">
+        <!-- Logo (links to homepage) -->
+        <a href="index.html" class="flex items-center gap-4 text-white">
+          <div class="size-6 text-primary">
+            <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
+          </div>
+          <h2 class="font-heading text-xl font-bold tracking-wider text-white">K.J. DIGITA</h2>
+        </a>
+        <!-- Nav Links (Now Linked) -->
+        <div class="hidden items-center gap-8 md:flex">
+          <!-- Link to Projects Page -->
+          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide3-projects.html">Projects</a>
+          <!-- Link to About Page -->
+          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide2.html">About Us</a>
+          <!-- Link to Events Page -->
+          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide6-events.html">Events</a>
+          <!-- Link to Contact Page (used for "Join Us") -->
+          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide7-contact.html">Join Us</a>
+        </div>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <main class="flex-grow">
+      <section class="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
+        <!-- Background Blur Effects -->
+        <div class="absolute inset-0 z-0">
+          <div class="absolute inset-0 bg-background-dark"></div>
+          <div class="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-primary/20 blur-3xl filter"></div>
+          <div class="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/20 blur-3xl filter"></div>
+        </div>
+        <!-- Content -->
+        <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <!-- Hero Text -->
+            <div class="flex flex-col items-start gap-6 text-left">
+              <h1 class="font-heading text-5xl font-bold leading-tight tracking-tighter text-white md:text-6xl lg:text-7xl">
+                Where Code Creates Impact.
+              </h1>
+              <p class="max-w-xl text-base leading-relaxed text-gray-300 md:text-lg">
+                A community of student innovators at K.J. Somaiya dedicated to developing cutting-edge skills through hands-on projects and collaborative problem-solving.
+              </p>
+              <!-- Button is now a link to the projects page -->
+              <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide transition-transform hover:scale-105" href="slide3-projects.html">
+                <span>Explore Our Projects</span>
+              </a>
+            </div>
+            <!-- Hero Images -->
+            <div class="relative h-[400px] w-full lg:h-[500px]">
+              <div class="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform">
+                <!-- Desktop Mockup -->
+                <div class="absolute left-0 top-0 h-auto w-full max-w-lg rounded-xl bg-gray-900/50 p-3 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm lg:max-w-xl">
+                  <div class="aspect-video w-full rounded-lg bg-cover bg-center" data-alt="Screenshot of a project dashboard UI" style='background-image: url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&auto=format&fit=crop&q=80");'></div>
+                </div>
+                <!-- Mobile Mockup -->
+                <div class="absolute bottom-[-10%] right-[-5%] h-auto w-1/3 max-w-[150px] rounded-lg bg-gray-900/50 p-2 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm">
+                  <div class="aspect-[9/19] w-full rounded-md bg-cover bg-center" data-alt="Mobile screenshot of a project UI" style='background-image: url("https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&q=80");'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <span class="material-symbols-outlined text-3xl text-white/50">expand_more</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
