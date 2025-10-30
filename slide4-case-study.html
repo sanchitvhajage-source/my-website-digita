@@ -53,28 +53,57 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light">
   <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-    <!-- === HEADER WITH AUTH & LINKS === -->
-    <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
+    
+    <!-- === NEW HEADER WITH HAMBURGER MENU === -->
+    <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
+      
       <!-- Logo -->
       <a href="index.html" class="flex items-center gap-4 text-white">
         <span class="material-symbols-outlined text-primary text-2xl"> hub </span>
         <h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-white">K.J. DIGITA</h2>
       </a>
-      <!-- Navigation Links -->
-      <nav class="hidden items-center gap-9 md:flex">
-        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="index.html">Home</a>
-        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide2.html">About</a>
-        <!-- Active Link -->
-        <a class="text-primary text-sm font-medium leading-normal" href="slide3-projects.html">Projects</a>
-        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
-        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
-        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
-      </nav>
-      <!-- Auth Section (Login/Profile) -->
-      <div id="auth-container" class="flex items-center justify-end" style="min-width: 100px;">
-        <div class="spinner"></div>
+
+      <!-- Desktop Nav & Auth -->
+      <div class="hidden md:flex items-center gap-9">
+        <nav class="flex items-center gap-9">
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="index.html">Home</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide2.html">About</a>
+          <a class="text-primary text-sm font-medium leading-normal" href="slide3-projects.html">Projects</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
+        </nav>
+        <!-- Desktop Auth -->
+        <div id="auth-container-desktop" class="flex items-center justify-end" style="min-width: 100px;">
+          <!-- Spinner will be injected by script -->
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-toggle" class="md:hidden rounded-md p-2 text-white/80 hover:text-white hover:bg-white/10">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+
+      <!-- Mobile Menu (Dropdown) -->
+      <div id="mobile-menu" class="hidden md:hidden w-full basis-full">
+        <div class="flex flex-col gap-y-4 pt-4 mt-4 border-t border-white/10">
+          <nav class="flex flex-col gap-4">
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="index.html">Home</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide2.html">About</a>
+            <a class="text-primary text-base font-medium leading-normal" href="slide3-projects.html">Projects</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
+          </nav>
+          <!-- Mobile Auth -->
+          <div id="auth-container-mobile" class="flex items-center justify-start pt-4 mt-4 border-t border-white/10">
+            <!-- Auth UI will be injected by script -->
+          </div>
+        </div>
       </div>
     </header>
+    <!-- === END OF NEW HEADER === -->
+
 
     <!-- Main Project Content -->
     <main class="flex flex-1 justify-center py-10 sm:py-16">
@@ -226,7 +255,21 @@ T                  </div>
 
   <!-- === FIREBASE & AUTH SCRIPT === -->
   <script type="module">
-    // Import Firebase modules
+    // --- Hamburger Menu Toggle ---
+    const toggleButton = document.getElementById("mobile-menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    toggleButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      // Change icon to 'close' when open
+      if (mobileMenu.classList.contains("hidden")) {
+        toggleButton.innerHTML = `<span class="material-symbols-outlined">menu</span>`;
+      } else {
+        toggleButton.innerHTML = `<span class="material-symbols-outlined">close</span>`;
+      }
+    });
+
+    // --- Firebase Auth ---
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import {
       getAuth,
@@ -251,7 +294,6 @@ T                  </div>
         appId: "YOUR_APP_ID"
       };
     
-    // --- App ID (for Firestore) ---
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
     // --- Initialize Firebase ---
@@ -263,15 +305,16 @@ T                  </div>
       setLogLevel('Debug');
     } catch (e) {
       console.error("Firebase initialization failed:", e);
-      const authContainer = document.getElementById("auth-container");
-      if(authContainer) {
-        authContainer.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
-      }
+      const authContainerDesktop = document.getElementById("auth-container-desktop");
+      const authContainerMobile = document.getElementById("auth-container-mobile");
+      if(authContainerDesktop) authContainerDesktop.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
+      if(authContainerMobile) authContainerMobile.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
       return; 
     }
 
     const provider = new GoogleAuthProvider();
-    const authContainer = document.getElementById("auth-container");
+    const authContainerDesktop = document.getElementById("auth-container-desktop");
+    const authContainerMobile = document.getElementById("auth-container-mobile");
 
     // --- Handle Login ---
     async function login() {
@@ -293,28 +336,35 @@ T                  </div>
 
     // --- Update UI based on Auth State ---
     function updateUI(user) {
-      if (!authContainer) return;
-
       if (user) {
         // User is signed in
-        authContainer.innerHTML = `
+        const authHTML = (idPrefix) => `
           <div class="flex items-center gap-3">
             <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + (user.displayName ? user.displayName[0] : 'U')}" alt="Profile" class="w-8 h-8 rounded-full">
-            <span class="hidden sm:inline text-white text-sm font-medium">${user.displayName || 'User'}</span>
-            <button id="logout-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+            <span class="inline text-white text-sm font-medium">${user.displayName || 'User'}</span>
+            <button id="logout-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
               <span class="truncate">Logout</span>
             </button>
           </div>
         `;
-        document.getElementById("logout-btn").addEventListener("click", logout);
+        if (authContainerDesktop) authContainerDesktop.innerHTML = authHTML('desktop');
+        if (authContainerMobile) authContainerMobile.innerHTML = authHTML('mobile');
+        
+        document.getElementById('logout-btn-desktop')?.addEventListener('click', logout);
+        document.getElementById('logout-btn-mobile')?.addEventListener('click', logout);
+        
       } else {
         // User is signed out
-        authContainer.innerHTML = `
-          <button id="login-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+        const authHTML = (idPrefix) => `
+          <button id="login-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
             <span class="truncate">Login</span>
           </button>
         `;
-        document.getElementById("login-btn").addEventListener("click", login);
+        if (authContainerDesktop) authContainerDesktop.innerHTML = authHTML('desktop');
+        if (authContainerMobile) authContainerMobile.innerHTML = authHTML('mobile');
+
+        document.getElementById('login-btn-desktop')?.addEventListener('click', login);
+        document.getElementById('login-btn-mobile')?.addEventListener('click', login);
       }
     }
 
@@ -323,15 +373,17 @@ T                  </div>
       updateUI(user);
     });
 
-    // --- Initial Auth Check (using custom token if available) ---
+    // --- Initial Auth Check ---
     async function initialAuthCheck() {
+      if (authContainerDesktop) authContainerDesktop.innerHTML = '<div class="spinner"></div>';
+      if (authContainerMobile) authContainerMobile.innerHTML = '<div class="spinner"></div>';
       try {
         if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
           await signInWithCustomToken(auth, __initial_auth_token);
         } else if (!auth.currentUser) {
            await signInAnonymously(auth);
         }
-      } catch (e) {
+      } catch (e).
         console.error("Initial auth check failed:", e);
         updateUI(null); // Show login on failure
       }
@@ -342,6 +394,8 @@ T                  </div>
   </script>
 </body>
 </html>
+
+
 
 
 
