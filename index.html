@@ -185,7 +185,8 @@
       onAuthStateChanged,
       GoogleAuthProvider,
       signInWithRedirect,
-      signOut
+      signOut,
+      getRedirectResult // <-- ADDED: To capture sign-in results after redirect
     } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
@@ -225,11 +226,32 @@
           auth = getAuth(app);
           db = getFirestore(app);
           setLogLevel('Debug');
+          // Check for redirect result immediately after initializing
+          handleRedirectResult(auth); 
         } catch (e) {
           console.error("Firebase initialization failed:", e);
           const errorMsg = `<span class="text-xs text-red-400">Auth Init Error</span>`;
           if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
           if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
+        }
+    }
+
+    // --- Function to handle redirect sign-in result ---
+    async function handleRedirectResult(authInstance) {
+        try {
+            const result = await getRedirectResult(authInstance);
+            if (result) {
+                // Sign-in successful, update UI right away
+                console.log("Redirect result successful, user:", result.user.displayName);
+                updateUI(result.user);
+            } else {
+                // No redirect result, let onAuthStateChanged handle the initial state
+                updateUI(authInstance.currentUser);
+            }
+        } catch (error) {
+            console.error("Error during redirect result processing:", error);
+            // Fallback to showing login button on error
+            updateUI(null);
         }
     }
 
@@ -240,6 +262,7 @@
           return;
       }
       try {
+        // This initiates the redirect to Google
         await signInWithRedirect(auth, provider);
       } catch (error) {
         console.error("Login failed:", error);
@@ -294,7 +317,15 @@
     // --- Auth State Listener ---
     if (auth) { // Only attach listener if auth is initialized
         onAuthStateChanged(auth, (user) => {
-          updateUI(user);
+          if (user) {
+            // User session is confirmed by the listener
+            updateUI(user); 
+          } else {
+            // User is signed out, but check for redirect first
+            if (!window.location.href.includes('?')) { // Avoid resetting state during redirect
+               updateUI(null);
+            }
+          }
         });
     } else {
         // If auth failed, just show the login button
@@ -303,6 +334,7 @@
   </script>
 </body>
 </html>
+
 
 
 
