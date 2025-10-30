@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>About K.J. DIGITA</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <!-- Using 'Inter' for display and 'Montserrat' for headings, like other pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#067ff9",
+            "background-light": "#f5f7f8",
+            "background-dark": "#0f1923",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"],
+            "heading": ["Montserrat", "sans-serif"] // Added heading font
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    /* Simple spinner for auth loading */
+    .spinner {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-base text-[#9babbb]">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div class="flex h-full grow flex-col">
+      <!-- === HEADER WITH AUTH & LINKS === -->
+      <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-4 text-white">
+          <span class="material-symbols-outlined text-primary text-2xl"> hub </span>
+          <h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-white">K.J. DIGITA</h2>
+        </a>
+        <!-- Navigation Links -->
+        <nav class="hidden items-center gap-9 md:flex">
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="index.html">Home</a>
+          <a class="text-primary text-sm font-medium leading-normal" href="slide2.html">About</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide3-projects.html">Projects</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
+        </nav>
+        <!-- Auth Section (Login/Profile) -->
+        <div id="auth-container" class="flex items-center justify-end" style="min-width: 100px;">
+          <!-- This will be replaced by script -->
+          <div class="spinner"></div>
+        </div>
+      </header>
+      <!-- === MAIN CONTENT === -->
+      <main class="flex flex-1 justify-center py-10 sm:py-16 md:py-20">
+        <div class="flex w-full max-w-5xl flex-col gap-10 px-4 sm:gap-16 sm:px-6 md:gap-20 lg:px-8">
+          <div class="flex flex-col items-center justify-center gap-4 text-center">
+            <div class="flex min-w-72 flex-col gap-4">
+              <h1 class="font-heading text-white text-4xl font-black leading-tight tracking-[-0.033em] sm:text-5xl md:text-6xl">Our Mission</h1>
+              <p class="text-[#9babbb] text-base font-normal leading-normal max-w-2xl mx-auto sm:text-lg">
+                We are a community dedicated to peer-to-peer knowledge sharing, collaborative innovation, and advancing the tech skills of tomorrow's leaders.
+              </p>
+            </div>
+            <hr class="w-16 border-t-2 border-primary mt-2" />
+          </div>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/[.05] p-6 transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:-translate-y-1">
+              <div class="text-primary">
+                <span class="material-symbols-outlined text-3xl">lightbulb</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h2 class="font-heading text-white text-xl font-bold leading-tight">Innovation</h2>
+                <p class="text-[#9babbb] text-sm font-normal leading-normal">
+                  Fostering creativity and novel solutions to complex problems through hands-on projects and forward-thinking discussions.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/[.05] p-6 transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:-translate-y-1">
+              <div class="text-primary">
+                <span class="material-symbols-outlined text-3xl">groups</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h2 class="font-heading text-white text-xl font-bold leading-tight">Collaboration</h2>
+                <p class="text-[#9babbb] text-sm font-normal leading-normal">
+                  Building a strong network where members can team up, share ideas, and learn from each other's unique perspectives and skills.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/[.05] p-6 transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:-translate-y-1">
+              <div class="text-primary">
+                <span class="material-symbols-outlined text-3xl">code</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h2 class="font-heading text-white text-xl font-bold leading-tight">Skill Development</h2>
+                <p class="text-[#9babbb] text-sm font-normal leading-normal">
+                  Providing a platform for practical, hands-on learning and mutual growth in the most current and impactful technologies.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- === FOOTER WITH LINKS === -->
+      <footer class="flex flex-col gap-8 border-t border-solid border-white/10 px-5 py-10 text-center">
+        <div class="mx-auto w-full max-w-5xl">
+          <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              <a class="text-[#9babbb] hover:text-white text-sm font-normal leading-normal transition-colors" href="privacy.html">Privacy Policy</a>
+              <a class="text-[#9babbb] hover:text-white text-sm font-normal leading-normal transition-colors" href="terms.html">Terms of Service</a>
+              <a class="text-[#9babbb] hover:text-white text-sm font-normal leading-normal transition-colors" href="slide7-contact.html">Contact Us</a>
+            </div>
+            <div class="flex justify-center gap-4">
+              <!-- Social Links (placeholders) -->
+              <a class_A="text-[#9babbb] hover:text-primary transition-colors" href="#">
+                <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+                  <path clip-rule="evenodd" d="M19.333 0H4.667C2.089 0 0 2.089 0 4.667v14.666C0 21.911 2.089 24 4.667 24h14.666C21.911 24 24 21.911 24 19.333V4.667C24 2.089 21.911 0 19.333 0zM8.339 20.333H5V8.889h3.339v11.444zM6.667 7.556c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm13.667 12.777h-3.333v-5.556c0-1.32-.024-3.024-1.844-3.024-1.844 0-2.127 1.44-2.127 2.928v5.652H9.667V8.889h3.2v1.467h.044c.444-.844 1.533-1.733 3.156-1.733 3.378 0 3.996 2.222 3.996 5.111v5.922z" fill-rule="evenodd"></path>
+                </svg>
+              </a>
+              <a class_A="text-[#9babbb] hover:text-primary transition-colors" href="#">
+                <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+                  <path clip-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.82-.26.82-.577 0-.285-.01-1.232-.015-2.234-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.217.694.825.576C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" fill-rule="evenodd"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="text-[#9babbb] text-sm font-normal leading-normal mt-8 pt-8 border-t border-solid border-white/10">© 2024 K.J. DIGITA. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- === FIREBASE & AUTH SCRIPT === -->
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut,
+      signInAnonymously,
+      signInWithCustomToken
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // --- Firebase Configuration ---
+    // This is a placeholder config.
+    // You MUST get your own config from the Firebase console.
+    const firebaseConfig = typeof __firebase_config !== 'undefined'
+      ? JSON.parse(__firebase_config)
+      : {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "YOUR_AUTH_DOMAIN",
+          projectId: "YOUR_PROJECT_ID",
+          storageBucket: "YOUR_STORAGE_BUCKET",
+          messagingSenderId: "YOUR_SENDER_ID",
+          appId: "YOUR_APP_ID"
+        };
+    
+    // --- App ID (for Firestore) ---
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    // --- Initialize Firebase ---
+    let app, auth, db;
+    try {
+      app = initializeApp(firebaseConfig);
+      auth = getAuth(app);
+      db = getFirestore(app);
+      setLogLevel('Debug');
+    } catch (e) {
+      console.error("Firebase initialization failed:", e);
+      // Display a friendly error to the user
+      const authContainer = document.getElementById("auth-container");
+      if(authContainer) {
+        authContainer.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
+      }
+      return; // Stop execution if Firebase fails
+    }
+
+    const provider = new GoogleAuthProvider();
+    const authContainer = document.getElementById("auth-container");
+
+    // --- Handle Login ---
+    async function login() {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (error) {
+        console.error("Login failed:", error);
+      }
+    }
+
+    // --- Handle Logout ---
+    async function logout() {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
+    }
+
+    // --- Update UI based on Auth State ---
+    function updateUI(user) {
+      if (!authContainer) return;
+
+      if (user) {
+        // User is signed in
+        authContainer.innerHTML = `
+          <div class="flex items-center gap-3">
+            <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + user.displayName[0]}" alt="Profile" class="w-8 h-8 rounded-full">
+            <span class="hidden sm:inline text-white text-sm font-medium">${user.displayName}</span>
+            <button id="logout-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+              <span class="truncate">Logout</span>
+            </button>
+          </div>
+        `;
+        document.getElementById("logout-btn").addEventListener("click", logout);
+      } else {
+        // User is signed out
+        authContainer.innerHTML = `
+          <button id="login-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+            <span class="truncate">Login</span>
+          </button>
+        `;
+        document.getElementById("login-btn").addEventListener("click", login);
+      }
+    }
+
+    // --- Auth State Listener ---
+    onAuthStateChanged(auth, (user) => {
+      updateUI(user);
+    });
+
+    // --- Initial Auth Check (using custom token if available) ---
+    async function initialAuthCheck() {
+      try {
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else if (!auth.currentUser) {
+          // If no custom token and not already signed in, sign in anonymously
+          // This ensures Firestore rules work even for non-logged-in users (if rules allow)
+          // For a public site, we might just let the UI update (which it does)
+          // Let's rely on the onAuthStateChanged to just show "Login"
+           updateUI(null); // Explicitly show Login button if no token
+        }
+        // If auth.currentUser already exists from a previous session, 
+        // onAuthStateChanged will fire and updateUI automatically.
+      } catch (e) {
+        console.error("Initial auth check failed:", e);
+        updateUI(null); // Show login on failure
+      }
+    }
+    
+    // Run the auth check
+    initialAuthCheck();
+  </script>
+</body>
+</html>
