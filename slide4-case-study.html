@@ -4,12 +4,14 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>K.J. DIGITA - AquaSentry Case Study</title>
-  <!-- ... (head content like styles, fonts, tailwind - no changes) ... -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Poppins:wght@700&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <!-- Tailwind Config -->
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -39,7 +41,6 @@
     .font-heading {
       font-family: 'Poppins', sans-serif;
     }
-    /* Removed spinner styles as auth is removed */
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light">
@@ -55,17 +56,15 @@
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-9">
-        <nav class="flex items-center gap-9">
-          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="index.html">Home</a>
-          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide2.html">About</a>
-          <a class="text-primary text-sm font-medium leading-normal" href="slide3-projects.html">Projects</a>
-          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
-          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
-          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
-        </nav>
-        <!-- Removed Desktop Auth Container -->
-      </div>
+      <nav class="hidden md:flex items-center gap-9">
+        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="index.html">Home</a>
+        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide2.html">About</a>
+        <!-- Set "Projects" to active -->
+        <a class="text-primary text-sm font-medium leading-normal" href="slide3-projects.html">Projects</a>
+        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
+        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
+        <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
+      </nav>
 
       <!-- Mobile Menu Button -->
       <button id="mobile-menu-toggle" class="md:hidden rounded-md p-2 text-white/80 hover:text-white hover:bg-white/10">
@@ -83,13 +82,12 @@
             <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
             <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
           </nav>
-          <!-- Removed Mobile Auth Container -->
         </div>
       </div>
     </header>
     <!-- === END OF HEADER === -->
 
-    <!-- ... (main content - no changes) ... -->
+    <!-- Main Content -->
     <main class="flex flex-1 justify-center py-10 sm:py-16">
       <div class="flex max-w-5xl flex-1 flex-col px-4 sm:px-6">
         <!-- Toolbar for navigation -->
@@ -124,7 +122,7 @@
             <!-- Image 1 -->
             <div class="flex flex-col gap-4 rounded-lg">
               <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <!-- === IMAGE FILENAME FIXED === -->
+                <!-- === FILENAME CORRECTED === -->
                 <img class="h-full w-full object-cover" src="1000061890.jpg.jpeg" alt="Screenshot of the app's flood dashboard showing safety measures." />
               </div>
               <div>
@@ -136,7 +134,7 @@
             <!-- Image 2 -->
             <div class="flex flex-col gap-4 rounded-lg">
               <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <!-- === IMAGE FILENAME FIXED === -->
+                <!-- === FILENAME CORRECTED === -->
                 <img class="h-full w-full object-cover" src="1000061891.jpg.jpeg" alt="Screenshot of the app's safe area notification." />
               </div>
               <div>
@@ -148,7 +146,7 @@
             <!-- Image 3 -->
             <div class="flex flex-col gap-4 rounded-lg">
               <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <!-- === IMAGE FILENAME FIXED === -->
+                <!-- === FILENAME CORRECTED === -->
                 <img class="h-full w-full object-cover" src="1000061892.jpg.jpeg" alt="Screenshot of the app's safety tips and risk checker." />
               </div>
               <div>
@@ -165,7 +163,7 @@
           <div class="space-y-12 lg:col-span-2">
             <!-- Problem & Solution Section -->
             <section class="space-y-8">
-              <div class.="space-y-3">
+              <div class="space-y-3">
                 <h3 class="font-heading text-2xl font-bold text-accent">The Problem</h3>
                 <p class="text-text-light leading-relaxed">Traditional flood warning systems often suffer from delays and lack the granular, real-time data needed for residents to make informed safety decisions. This communication gap can lead to significant property damage and risk to human life.</p>
               </div>
@@ -223,24 +221,29 @@
               <h3 class="font-heading text-lg font-bold text-accent mb-4 border-b border-white/10 pb-2">My Role</h3>
               <p class="text-text-light">Led the end-to-end UI/UX design process, from wireframing to high-fidelity prototypes. I also developed the complete front-end of the mobile application using React Native, ensuring a responsive and performant user experience.</p>
             </section>
+            
+            <!-- === TECH STACK UPDATED === -->
             <section>
               <h3 class="font-heading text-lg font-bold text-accent mb-4 border-b border-white/10 pb-2">Tech Stack</h3>
               <div class="flex flex-wrap gap-3">
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">React Native</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Firebase</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Python</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">TensorFlow</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Expo</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Figma</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Osmdroid Map</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Google Map Redirect</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Predictive AI</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Open-meteo pluvial</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Open-meteo rainfall</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">community reporting(future update)</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Multilingual UI(future update)</span>
               </div>
             </section>
+            <!-- === END OF TECH STACK === -->
+            
           </aside>
         </div>
       </div>
     </main>
   </div>
 
-  <!-- === Minimal Hamburger Menu Script === -->
+  <!-- === Minimal Hamburger Menu Script (NO LOGIN) === -->
   <script type="module">
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
@@ -260,6 +263,7 @@
   </script>
 </body>
 </html>
+
 
 
 
