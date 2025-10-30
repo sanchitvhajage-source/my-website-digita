@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>K.J. DIGITA - AquaSentry Case Study</title>
+  <!-- ... (head content like styles, fonts, tailwind - no changes) ... -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -104,8 +105,7 @@
     </header>
     <!-- === END OF HEADER === -->
 
-
-    <!-- Main Project Content -->
+    <!-- ... (main content - no changes) ... -->
     <main class="flex flex-1 justify-center py-10 sm:py-16">
       <div class="flex max-w-5xl flex-1 flex-col px-4 sm:px-6">
         <!-- Toolbar for navigation -->
@@ -253,8 +253,36 @@
     </main>
   </div>
 
-  <!-- === FIREBASE & AUTH SCRIPT (FIXED) === -->
+  <!-- === FIREBASE & AUTH SCRIPT (FIXED v2) === -->
   <script type="module">
+    /*
+      =============================================================================
+      IMPORTANT: FIXING THE "auth/unauthorized-domain" ERROR
+      =============================================================================
+      
+      You are seeing an "auth/unauthorized-domain" error in the console. 
+      This is NOT a code error. It is a FIREBASE CONFIGURATION issue.
+
+      It means the domain your website is running on is not allowed to use
+      Firebase Authentication.
+
+      To fix this, you MUST go to your Firebase project console:
+
+      1.  Go to https://console.firebase.google.com/
+      2.  Open your project.
+      3.  Go to "Authentication" (in the "Build" section).
+      4.  Click the "Settings" tab.
+      5.  Click the "Authorized domains" section.
+      6.  Click "Add domain".
+      7.  Copy the domain from the error message in your console and paste it.
+          The domain from your latest error is:
+          
+          095aq63y0oi0171r37lia756mcyldwgn7ntpnghq6dl2xggt4k-h822042238.scf.usercontent.goog
+
+      After adding this domain, the login will work. The code below is correct.
+      =============================================================================
+    */
+
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -277,49 +305,62 @@
       getAuth,
       onAuthStateChanged,
       GoogleAuthProvider,
-      signInWithRedirect, // <-- CHANGED from signInWithPopup
+      signInWithRedirect,
       signOut,
       signInWithCustomToken
     } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // --- Firebase Configuration ---
-    const firebaseConfig = typeof __firebase_config !== 'undefined'
-      ? JSON.parse(__firebase_config)
-      : {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_STORAGE_BUCKET",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-      };
+    // --- Robust Firebase Configuration ---
+    let firebaseConfig;
+    if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+        try {
+            firebaseConfig = JSON.parse(__firebase_config);
+        } catch (e) {
+            console.error("Failed to parse firebase config:", e);
+            firebaseConfig = null; // Force failure
+        }
+    } else {
+        firebaseConfig = null; // No config provided
+        console.warn("Firebase config (__firebase_config) is missing.");
+    }
     
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
     // --- Initialize Firebase ---
     let app, auth, db;
-    try {
-      app = initializeApp(firebaseConfig);
-      auth = getAuth(app);
-      db = getFirestore(app);
-      setLogLevel('Debug');
-    } catch (e) {
-      console.error("Firebase initialization failed:", e);
-      const authContainerDesktop = document.getElementById("auth-container-desktop");
-      const authContainerMobile = document.getElementById("auth-container-mobile");
-      if(authContainerDesktop) authContainerDesktop.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
-      if(authContainerMobile) authContainerMobile.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
-    }
-
-    const provider = new GoogleAuthProvider();
     const authContainerDesktop = document.getElementById("auth-container-desktop");
     const authContainerMobile = document.getElementById("auth-container-mobile");
+    const provider = new GoogleAuthProvider();
+
+    if (!firebaseConfig) {
+        console.error("Firebase config is missing or invalid.");
+        const errorMsg = `<span class="text-xs text-red-400">Auth Config Error</span>`;
+        if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
+        if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
+    } else {
+        try {
+          app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          db = getFirestore(app);
+          setLogLevel('Debug');
+        } catch (e) {
+          console.error("Firebase initialization failed:", e);
+          const errorMsg = `<span class="text-xs text-red-400">Auth Init Error</span>`;
+          if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
+          if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
+        }
+    }
 
     // --- Handle Login ---
     async function login() {
+      console.log("Login button clicked, attempting to sign in..."); // <-- DEBUG LOG
+      if (!auth) {
+          console.error("Login failed: Firebase Auth is not initialized.");
+          return;
+      }
       try {
-        await signInWithRedirect(auth, provider); // <-- CHANGED from signInWithPopup
+        await signInWithRedirect(auth, provider);
       } catch (error) {
         console.error("Login failed:", error);
       }
@@ -327,6 +368,10 @@
 
     // --- Handle Logout ---
     async function logout() {
+      if (!auth) {
+          console.error("Logout failed: Firebase Auth is not initialized.");
+          return;
+      }
       try {
         await signOut(auth);
       } catch (error) {
@@ -336,8 +381,7 @@
 
     // --- Update UI based on Auth State ---
     function updateUI(user) {
-      if (user && !user.isAnonymous) { // <-- Check that user is not anonymous
-        // User is signed in
+      if (user && !user.isAnonymous) { // User is signed in
         const authHTML = (idPrefix) => `
           <div class="flex items-center gap-3">
             <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + (user.displayName ? user.displayName[0] : 'U')}" alt="Profile" class="w-8 h-8 rounded-full">
@@ -353,8 +397,7 @@
         document.getElementById('logout-btn-desktop')?.addEventListener('click', logout);
         document.getElementById('logout-btn-mobile')?.addEventListener('click', logout);
         
-      } else {
-        // User is signed out or anonymous
+      } else { // User is signed out or anonymous
         const authHTML = (idPrefix) => `
           <button id="login-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
             <span class="truncate">Login</span>
@@ -369,30 +412,31 @@
     }
 
     // --- Auth State Listener ---
-    onAuthStateChanged(auth, (user) => {
-      // This listener handles page load AND redirect returns
-      // 1. Page load, no token, no redirect -> user is null
-      // 2. Page load, with token -> user is {custom user}
-      // 3. Page load, after redirect -> user is {google user}
-      updateUI(user);
-    });
+    if (auth) { // Only attach listener if auth is initialized
+        onAuthStateChanged(auth, (user) => {
+          updateUI(user);
+        });
+    }
 
-    // --- Initial Auth Check (for custom token) ---
+    // --- Initial Auth Check ---
     async function initialAuthCheck() {
-      // Show spinners while we check
+      // Show spinners
       if (authContainerDesktop) authContainerDesktop.innerHTML = '<div class="spinner"></div>';
       if (authContainerMobile) authContainerMobile.innerHTML = '<div class="spinner"></div>';
       
+      if (!auth) { // If auth failed to init, just show login
+          console.warn("Auth check skipped: Auth not initialized.");
+          updateUI(null);
+          return; 
+      }
+
       try {
         if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-          // We have a custom token, sign in with it.
-          // onAuthStateChanged will fire and updateUI.
           await signInWithCustomToken(auth, __initial_auth_token);
         } else {
-          // No custom token.
-          // onAuthStateChanged has already fired with auth.currentUser (which is null or from redirect)
-          // So we can just call updateUI with the current status
-          updateUI(auth.currentUser);
+          // No token, onAuthStateChanged will handle it
+          // but we call updateUI to remove spinner
+          updateUI(auth.currentUser); 
         }
       } catch (e) { 
         console.error("Initial auth check failed:", e);
@@ -405,6 +449,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
