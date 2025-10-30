@@ -160,7 +160,7 @@
     </main>
   </div>
 
-  <!-- === FIREBASE & AUTH SCRIPT (PERMANENT FIX) === -->
+  <!-- === FIREBASE & AUTH SCRIPT (FINAL PERMANENT FIX) === -->
   <script type="module">
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
@@ -226,33 +226,25 @@
           auth = getAuth(app);
           db = getFirestore(app);
           setLogLevel('Debug');
-          // Check for redirect result immediately after initializing
-          handleRedirectResult(auth); 
+          
+          // CRITICAL: Check for redirect result and let onAuthStateChanged handle the final UI
+          getRedirectResult(auth)
+            .then((result) => {
+              if (result) {
+                console.log("Redirect result successful, immediately updating UI.");
+                updateUI(result.user);
+              }
+            })
+            .catch((error) => {
+              console.error("Error during initial redirect check:", error);
+              updateUI(null);
+            });
+          
         } catch (e) {
           console.error("Firebase initialization failed:", e);
           const errorMsg = `<span class="text-xs text-red-400">Auth Init Error</span>`;
           if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
           if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
-        }
-    }
-
-    // --- Function to handle redirect sign-in result ---
-    async function handleRedirectResult(authInstance) {
-        try {
-            const result = await getRedirectResult(authInstance);
-            if (result) {
-                // Sign-in successful, update UI right away
-                console.log("Redirect result successful, user:", result.user.displayName);
-                updateUI(result.user);
-            } else {
-                // No redirect result, let onAuthStateChanged handle the initial state
-                // This ensures the spinner is replaced with the correct UI (login or profile)
-                updateUI(authInstance.currentUser);
-            }
-        } catch (error) {
-            console.error("Error during redirect result processing:", error);
-            // Fallback to showing login button on error
-            updateUI(null);
         }
     }
 
@@ -263,7 +255,6 @@
           return;
       }
       try {
-        // This initiates the redirect to Google
         await signInWithRedirect(auth, provider);
       } catch (error) {
         console.error("Login failed:", error);
@@ -315,14 +306,11 @@
       }
     }
 
-    // --- Auth State Listener (Fallback / Session Check) ---
+    // --- Auth State Listener (Final Session Confirmation) ---
     if (auth) { // Only attach listener if auth is initialized
         onAuthStateChanged(auth, (user) => {
-          if (user) {
-            // This listener fires when the user is logged in (after redirect or on subsequent loads)
-            updateUI(user); 
-          }
-          // Note: If user is null, the initial handleRedirectResult or a click event will call updateUI(null).
+          // This listener is the ultimate source of truth for the session state.
+          updateUI(user); 
         });
     } else {
         // If auth failed to initialize, show the login button
@@ -331,6 +319,7 @@
   </script>
 </body>
 </html>
+
 
 
 
