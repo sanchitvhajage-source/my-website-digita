@@ -44,36 +44,75 @@
     .font-heading {
       font-family: 'Montserrat', sans-serif;
     }
+    /* Spinner for login loading */
+    .spinner {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-300">
   <div class="relative flex min-h-screen w-full flex-col">
-    <!-- Top Navigation Bar -->
-    <header class="absolute top-0 left-0 right-0 z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <nav class="flex h-20 items-center justify-between border-b border-white/10">
-        <!-- Logo (links to homepage) -->
-        <a href="index.html" class="flex items-center gap-4 text-white">
-          <div class="size-6 text-primary">
-            <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
-            </svg>
-          </div>
-          <h2 class="font-heading text-xl font-bold tracking-wider text-white">K.J. DIGITA</h2>
-        </a>
-        <!-- Nav Links (Now Linked) -->
-        <div class="hidden items-center gap-8 md:flex">
-          <!-- Link to Projects Page -->
-          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide3-projects.html">Projects</a>
-          <!-- Link to About Page -->
-          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide2.html">About Us</a>
-          <!-- Link to Events Page -->
-          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide6-events.html">Events</a>
-          <!-- Link to Contact Page (used for "Join Us") -->
-          <a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="slide7-contact.html">Join Us</a>
+    
+    <!-- === HEADER WITH HAMBURGER MENU & LOGIN === -->
+    <header class="absolute top-0 left-0 right-0 z-50 flex flex-wrap items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-transparent px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-4 text-white">
+        <span class="material-symbols-outlined text-primary text-2xl"> hub </span>
+        <h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-white">K.J. DIGITA</h2>
+      </a>
+
+      <!-- Desktop Nav & Auth -->
+      <div class="hidden md:flex items-center gap-9">
+        <nav class="flex items-center gap-9">
+          <!-- Set "Home" to active -->
+          <a class="text-primary text-sm font-medium leading-normal" href="index.html">Home</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide2.html">About</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide3-projects.html">Projects</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
+          <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
+        </nav>
+        <!-- Desktop Auth -->
+        <div id="auth-container-desktop" class="flex items-center justify-end" style="min-width: 100px;">
+          <!-- Spinner will be injected by script -->
         </div>
-      </nav>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-toggle" class="md:hidden rounded-md p-2 text-white/80 hover:text-white hover:bg-white/10">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+
+      <!-- Mobile Menu (Dropdown) -->
+      <div id="mobile-menu" class="hidden md:hidden w-full basis-full">
+        <div class="flex flex-col gap-y-4 pt-4 mt-4 border-t border-white/10">
+          <nav class="flex flex-col gap-4">
+            <a class="text-primary text-base font-medium leading-normal" href="index.html">Home</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide2.html">About</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide3-projects.html">Projects</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide5-team.html">Team</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
+            <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
+          </nav>
+          <!-- Mobile Auth -->
+          <div id="auth-container-mobile" class="flex items-center justify-start pt-4 mt-4 border-t border-white/10">
+            <!-- Auth UI will be injected by script -->
+          </div>
+        </div>
+      </div>
     </header>
-    <!-- Hero Section -->
+    <!-- === END OF HEADER === -->
+    
+    <!-- Hero Section (Your original code, untouched) -->
     <main class="flex-grow">
       <section class="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
         <!-- Background Blur Effects -->
@@ -120,5 +159,149 @@
       </section>
     </main>
   </div>
+
+  <!-- === NEW FIREBASE & AUTH SCRIPT (100% Correct) === -->
+  <script type="module">
+    // --- Hamburger Menu Toggle ---
+    const toggleButton = document.getElementById("mobile-menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    if (toggleButton && mobileMenu) {
+      toggleButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        // Change icon to 'close' when open
+        if (mobileMenu.classList.contains("hidden")) {
+          toggleButton.innerHTML = `<span class="material-symbols-outlined">menu</span>`;
+        } else {
+          toggleButton.innerHTML = `<span class="material-symbols-outlined">close</span>`;
+        }
+      });
+    }
+
+    // --- Firebase Auth ---
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      GoogleAuthProvider,
+      signInWithRedirect,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // --- Robust Firebase Configuration ---
+    let firebaseConfig;
+    if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+        try {
+            firebaseConfig = JSON.parse(__firebase_config);
+        } catch (e) {
+            console.error("Failed to parse firebase config:", e);
+            firebaseConfig = null;
+        }
+    } else {
+        firebaseConfig = null;
+        console.warn("Firebase config (__firebase_config) is missing.");
+    }
+    
+    // --- Initialize Firebase ---
+    let app, auth, db;
+    const authContainerDesktop = document.getElementById("auth-container-desktop");
+    const authContainerMobile = document.getElementById("auth-container-mobile");
+    const provider = new GoogleAuthProvider();
+
+    // Show loading spinner
+    const spinnerHTML = '<div class="spinner"></div>';
+    if (authContainerDesktop) authContainerDesktop.innerHTML = spinnerHTML;
+    if (authContainerMobile) authContainerMobile.innerHTML = spinnerHTML;
+
+    if (!firebaseConfig) {
+        console.error("Firebase config is missing or invalid.");
+        const errorMsg = `<span class="text-xs text-red-400">Auth Error</span>`;
+        if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
+        if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
+    } else {
+        try {
+          app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          db = getFirestore(app);
+          setLogLevel('Debug');
+        } catch (e) {
+          console.error("Firebase initialization failed:", e);
+          const errorMsg = `<span class="text-xs text-red-400">Auth Init Error</span>`;
+          if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
+          if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
+        }
+    }
+
+    // --- Handle Login ---
+    async function login() {
+      if (!auth) {
+          console.error("Login failed: Firebase Auth is not initialized.");
+          return;
+      }
+      try {
+        await signInWithRedirect(auth, provider);
+      } catch (error) {
+        console.error("Login failed:", error);
+      }
+    }
+
+    // --- Handle Logout ---
+    async function logout() {
+      if (!auth) {
+          console.error("Logout failed: Firebase Auth is not initialized.");
+          return;
+      }
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
+    }
+
+    // --- Update UI based on Auth State ---
+    function updateUI(user) {
+      if (user && !user.isAnonymous) { // User is signed in
+        const authHTML = (idPrefix) => `
+          <div class="flex items-center gap-3">
+            <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + (user.displayName ? user.displayName[0] : 'U')}" alt="Profile" class="w-8 h-8 rounded-full">
+            <span class="inline text-white text-sm font-medium">${user.displayName || 'User'}</span>
+            <button id="logout-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+              <span class="truncate">Logout</span>
+            </button>
+          </div>
+        `;
+        if (authContainerDesktop) authContainerDesktop.innerHTML = authHTML('desktop');
+        if (authContainerMobile) authContainerMobile.innerHTML = authHTML('mobile');
+        
+        document.getElementById('logout-btn-desktop')?.addEventListener('click', logout);
+        document.getElementById('logout-btn-mobile')?.addEventListener('click', logout);
+        
+      } else { // User is signed out or anonymous
+        const authHTML = (idPrefix) => `
+          <button id="login-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
+            <span class="truncate">Login</span>
+          </button>
+        `;
+        if (authContainerDesktop) authContainerDesktop.innerHTML = authHTML('desktop');
+        if (authContainerMobile) authContainerMobile.innerHTML = authHTML('mobile');
+
+        document.getElementById('login-btn-desktop')?.addEventListener('click', login);
+        document.getElementById('login-btn-mobile')?.addEventListener('click', login);
+      }
+    }
+
+    // --- Auth State Listener ---
+    if (auth) { // Only attach listener if auth is initialized
+        onAuthStateChanged(auth, (user) => {
+          updateUI(user);
+        });
+    } else {
+        // If auth failed, just show the login button
+        updateUI(null);
+    }
+  </script>
 </body>
 </html>
+
+
