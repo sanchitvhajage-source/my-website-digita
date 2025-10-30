@@ -39,23 +39,13 @@
     .font-heading {
       font-family: 'Poppins', sans-serif;
     }
-    .spinner {
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    /* Removed spinner styles as auth is removed */
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light">
   <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
     
-    <!-- === HEADER WITH HAMBURGER MENU === -->
+    <!-- === HEADER WITH HAMBURGER MENU (NO LOGIN) === -->
     <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
       
       <!-- Logo -->
@@ -64,7 +54,7 @@
         <h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-white">K.J. DIGITA</h2>
       </a>
 
-      <!-- Desktop Nav & Auth -->
+      <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-9">
         <nav class="flex items-center gap-9">
           <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="index.html">Home</a>
@@ -74,10 +64,7 @@
           <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
           <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
         </nav>
-        <!-- Desktop Auth -->
-        <div id="auth-container-desktop" class="flex items-center justify-end" style="min-width: 100px;">
-          <!-- Spinner will be injected by script -->
-        </div>
+        <!-- Removed Desktop Auth Container -->
       </div>
 
       <!-- Mobile Menu Button -->
@@ -96,10 +83,7 @@
             <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide6-events.html">Events</a>
             <a class="text-white/80 hover:text-white text-base font-medium leading-normal transition-colors" href="slide7-contact.html">Contact</a>
           </nav>
-          <!-- Mobile Auth -->
-          <div id="auth-container-mobile" class="flex items-center justify-start pt-4 mt-4 border-t border-white/10">
-            <!-- Auth UI will be injected by script -->
-          </div>
+          <!-- Removed Mobile Auth Container -->
         </div>
       </div>
     </header>
@@ -253,36 +237,8 @@
     </main>
   </div>
 
-  <!-- === FIREBASE & AUTH SCRIPT (FIXED v2) === -->
+  <!-- === Minimal Hamburger Menu Script === -->
   <script type="module">
-    /*
-      =============================================================================
-      IMPORTANT: FIXING THE "auth/unauthorized-domain" ERROR
-      =============================================================================
-      
-      You are seeing an "auth/unauthorized-domain" error in the console. 
-      This is NOT a code error. It is a FIREBASE CONFIGURATION issue.
-
-      It means the domain your website is running on is not allowed to use
-      Firebase Authentication.
-
-      To fix this, you MUST go to your Firebase project console:
-
-      1.  Go to https://console.firebase.google.com/
-      2.  Open your project.
-      3.  Go to "Authentication" (in the "Build" section).
-      4.  Click the "Settings" tab.
-      5.  Click the "Authorized domains" section.
-      6.  Click "Add domain".
-      7.  Copy the domain from the error message in your console and paste it.
-          The domain from your latest error is:
-          
-          095aq63y0oi0171r37lia756mcyldwgn7ntpnghq6dl2xggt4k-h822042238.scf.usercontent.goog
-
-      After adding this domain, the login will work. The code below is correct.
-      =============================================================================
-    */
-
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -298,157 +254,11 @@
         }
       });
     }
-
-    // --- Firebase Auth ---
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import {
-      getAuth,
-      onAuthStateChanged,
-      GoogleAuthProvider,
-      signInWithRedirect,
-      signOut,
-      signInWithCustomToken
-    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-    // --- Robust Firebase Configuration ---
-    let firebaseConfig;
-    if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-        try {
-            firebaseConfig = JSON.parse(__firebase_config);
-        } catch (e) {
-            console.error("Failed to parse firebase config:", e);
-            firebaseConfig = null; // Force failure
-        }
-    } else {
-        firebaseConfig = null; // No config provided
-        console.warn("Firebase config (__firebase_config) is missing.");
-    }
-    
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-
-    // --- Initialize Firebase ---
-    let app, auth, db;
-    const authContainerDesktop = document.getElementById("auth-container-desktop");
-    const authContainerMobile = document.getElementById("auth-container-mobile");
-    const provider = new GoogleAuthProvider();
-
-    if (!firebaseConfig) {
-        console.error("Firebase config is missing or invalid.");
-        const errorMsg = `<span class="text-xs text-red-400">Auth Config Error</span>`;
-        if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
-        if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
-    } else {
-        try {
-          app = initializeApp(firebaseConfig);
-          auth = getAuth(app);
-          db = getFirestore(app);
-          setLogLevel('Debug');
-        } catch (e) {
-          console.error("Firebase initialization failed:", e);
-          const errorMsg = `<span class="text-xs text-red-400">Auth Init Error</span>`;
-          if(authContainerDesktop) authContainerDesktop.innerHTML = errorMsg;
-          if(authContainerMobile) authContainerMobile.innerHTML = errorMsg;
-        }
-    }
-
-    // --- Handle Login ---
-    async function login() {
-      console.log("Login button clicked, attempting to sign in..."); // <-- DEBUG LOG
-      if (!auth) {
-          console.error("Login failed: Firebase Auth is not initialized.");
-          return;
-      }
-      try {
-        await signInWithRedirect(auth, provider);
-      } catch (error) {
-        console.error("Login failed:", error);
-      }
-    }
-
-    // --- Handle Logout ---
-    async function logout() {
-      if (!auth) {
-          console.error("Logout failed: Firebase Auth is not initialized.");
-          return;
-      }
-      try {
-        await signOut(auth);
-      } catch (error) {
-        console.error("Logout failed:", error);
-      }
-    }
-
-    // --- Update UI based on Auth State ---
-    function updateUI(user) {
-      if (user && !user.isAnonymous) { // User is signed in
-        const authHTML = (idPrefix) => `
-          <div class="flex items-center gap-3">
-            <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + (user.displayName ? user.displayName[0] : 'U')}" alt="Profile" class="w-8 h-8 rounded-full">
-            <span class="inline text-white text-sm font-medium">${user.displayName || 'User'}</span>
-            <button id="logout-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
-              <span class="truncate">Logout</span>
-            </button>
-          </div>
-        `;
-        if (authContainerDesktop) authContainerDesktop.innerHTML = authHTML('desktop');
-        if (authContainerMobile) authContainerMobile.innerHTML = authHTML('mobile');
-        
-        document.getElementById('logout-btn-desktop')?.addEventListener('click', logout);
-        document.getElementById('logout-btn-mobile')?.addEventListener('click', logout);
-        
-      } else { // User is signed out or anonymous
-        const authHTML = (idPrefix) => `
-          <button id="login-btn-${idPrefix}" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
-            <span class="truncate">Login</span>
-          </button>
-        `;
-        if (authContainerDesktop) authContainerDesktop.innerHTML = authHTML('desktop');
-        if (authContainerMobile) authContainerMobile.innerHTML = authHTML('mobile');
-
-        document.getElementById('login-btn-desktop')?.addEventListener('click', login);
-        document.getElementById('login-btn-mobile')?.addEventListener('click', login);
-      }
-    }
-
-    // --- Auth State Listener ---
-    if (auth) { // Only attach listener if auth is initialized
-        onAuthStateChanged(auth, (user) => {
-          updateUI(user);
-        });
-    }
-
-    // --- Initial Auth Check ---
-    async function initialAuthCheck() {
-      // Show spinners
-      if (authContainerDesktop) authContainerDesktop.innerHTML = '<div class="spinner"></div>';
-      if (authContainerMobile) authContainerMobile.innerHTML = '<div class="spinner"></div>';
-      
-      if (!auth) { // If auth failed to init, just show login
-          console.warn("Auth check skipped: Auth not initialized.");
-          updateUI(null);
-          return; 
-      }
-
-      try {
-        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-          await signInWithCustomToken(auth, __initial_auth_token);
-        } else {
-          // No token, onAuthStateChanged will handle it
-          // but we call updateUI to remove spinner
-          updateUI(auth.currentUser); 
-        }
-      } catch (e) { 
-        console.error("Initial auth check failed:", e);
-        updateUI(null); // Show login on failure
-      }
-    }
-    
-    // Run the auth check
-    initialAuthCheck();
   </script>
 </body>
 </html>
+
+
 
 
 
