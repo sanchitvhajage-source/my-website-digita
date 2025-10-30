@@ -186,7 +186,7 @@
       GoogleAuthProvider,
       signInWithRedirect,
       signOut,
-      getRedirectResult // <-- ADDED: To capture sign-in results after redirect
+      getRedirectResult
     } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
@@ -246,6 +246,7 @@
                 updateUI(result.user);
             } else {
                 // No redirect result, let onAuthStateChanged handle the initial state
+                // This ensures the spinner is replaced with the correct UI (login or profile)
                 updateUI(authInstance.currentUser);
             }
         } catch (error) {
@@ -314,26 +315,23 @@
       }
     }
 
-    // --- Auth State Listener ---
+    // --- Auth State Listener (Fallback / Session Check) ---
     if (auth) { // Only attach listener if auth is initialized
         onAuthStateChanged(auth, (user) => {
           if (user) {
-            // User session is confirmed by the listener
+            // This listener fires when the user is logged in (after redirect or on subsequent loads)
             updateUI(user); 
-          } else {
-            // User is signed out, but check for redirect first
-            if (!window.location.href.includes('?')) { // Avoid resetting state during redirect
-               updateUI(null);
-            }
           }
+          // Note: If user is null, the initial handleRedirectResult or a click event will call updateUI(null).
         });
     } else {
-        // If auth failed, just show the login button
+        // If auth failed to initialize, show the login button
         updateUI(null);
     }
   </script>
 </body>
 </html>
+
 
 
 
