@@ -127,7 +127,7 @@
           <div class="flex flex-wrap gap-3">
             <!-- "View Code on GitHub" LINK (FIXED) -->
             <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-5 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-colors" href="https://github.com/sanchitvhajage-source/AquaSentry" target="_blank" rel="noopener noreferrer">
-              <svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.475 2 2 6.475 2 12C2 16.017 4.43 19.333 8.01 20.473C8.47 20.553 8.645 20.26 8.645 20.013V18.188C6.555 18.633 6.035 17.26 6.035 17.26C5.615 16.222 5.045 15.967 5.045 15.967C4.205 15.388 5.105 15.4 5.105 15.4C5.995 15.46 6.455 16.31 6.455 16.31C7.255 17.747 8.685 17.31 9.245 17.048C9.325 16.485 9.555 16.082 9.815 15.868C7.865 15.648 5.795 14.893 5.795 11.633C5.795 10.583 6.165 9.723 6.785 9.053C6.695 8.833 6.365 7.788 6.875 6.553C6.875 6.553 7.625 6.313 9.225 7.423C9.935 7.223 10.695 7.123 11.455 7.123C12.215 7.123 12.975 7.223 13.685 7.423C15.285 6.313 16.035 6.553 16.035 6.553C16.545 7.788 16.215 8.833 16.125 9.053C16.745 9.723 17.115 10.583 17.115 11.633C17.115 14.903 15.045 15.648 13.085 15.868C13.415 16.142 13.675 16.66 13.675 17.413V20.013C13.675 20.26 13.84 20.553 14.31 20.473C17.88 19.333 20.32 16.017 20.32 12C20.32 6.475 15.845 2 12 2Z"></path></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/0000/svg"><path d="M12 2C6.475 2 2 6.475 2 12C2 16.017 4.43 19.333 8.01 20.473C8.47 20.553 8.645 20.26 8.645 20.013V18.188C6.555 18.633 6.035 17.26 6.035 17.26C5.615 16.222 5.045 15.967 5.045 15.967C4.205 15.388 5.105 15.4 5.105 15.4C5.995 15.46 6.455 16.31 6.455 16.31C7.255 17.747 8.685 17.31 9.245 17.048C9.325 16.485 9.555 16.082 9.815 15.868C7.865 15.648 5.795 14.893 5.795 11.633C5.795 10.583 6.165 9.723 6.785 9.053C6.695 8.833 6.365 7.788 6.875 6.553C6.875 6.553 7.625 6.313 9.225 7.423C9.935 7.223 10.695 7.123 11.455 7.123C12.215 7.123 12.975 7.223 13.685 7.423C15.285 6.313 16.035 6.553 16.035 6.553C16.545 7.788 16.215 8.833 16.125 9.053C16.745 9.723 17.115 10.583 17.115 11.633C17.115 14.903 15.045 15.648 13.085 15.868C13.415 16.142 13.675 16.66 13.675 17.413V20.013C13.675 20.26 13.84 20.553 14.31 20.473C17.88 19.333 20.32 16.017 20.32 12C20.32 6.475 15.845 2 12 2Z"></path></svg>
               <span class="truncate">View Code on GitHub</span>
             </a>
           </div>
@@ -225,7 +225,7 @@
                   <div>
                     <h4 class="font-bold text-white">AI-Powered Routes</h4>
                     <p class="text-text-muted text-sm">Find the safest evacuation route using an AI model.</p>
-T                  </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -309,7 +309,7 @@ T                  </div>
       const authContainerMobile = document.getElementById("auth-container-mobile");
       if(authContainerDesktop) authContainerDesktop.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
       if(authContainerMobile) authContainerMobile.innerHTML = `<span class="text-xs text-red-400">Auth Error</span>`;
-      return; 
+      // REMOVED ILLEGAL 'return;' STATEMENT
     }
 
     const provider = new GoogleAuthProvider();
@@ -383,7 +383,7 @@ T                  </div>
         } else if (!auth.currentUser) {
            await signInAnonymously(auth);
         }
-      } catch (e).
+      } catch (e) { 
         console.error("Initial auth check failed:", e);
         updateUI(null); // Show login on failure
       }
@@ -394,6 +394,8 @@ T                  </div>
   </script>
 </body>
 </html>
+
+
 
 
 
