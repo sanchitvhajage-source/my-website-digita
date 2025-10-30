@@ -160,7 +160,7 @@
     </main>
   </div>
 
-  <!-- === FIREBASE & AUTH SCRIPT (FINAL PERMANENT FIX) === -->
+  <!-- === FIREBASE & AUTH SCRIPT (FINAL PERMANENT FIX V2) === -->
   <script type="module">
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
@@ -227,17 +227,15 @@
           db = getFirestore(app);
           setLogLevel('Debug');
           
-          // CRITICAL: Check for redirect result and let onAuthStateChanged handle the final UI
+          // Check for redirect result immediately (this is the key to catching the session)
           getRedirectResult(auth)
-            .then((result) => {
-              if (result) {
-                console.log("Redirect result successful, immediately updating UI.");
-                updateUI(result.user);
-              }
+            .then(() => {
+              // Result handled internally by Firebase; onAuthStateChanged will handle UI update
             })
             .catch((error) => {
               console.error("Error during initial redirect check:", error);
-              updateUI(null);
+              // On error, let the listener decide the final state
+              updateUI(auth.currentUser);
             });
           
         } catch (e) {
@@ -319,6 +317,7 @@
   </script>
 </body>
 </html>
+
 
 
 
