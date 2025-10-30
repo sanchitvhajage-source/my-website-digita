@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>K.J. DIGITA - AquaSentry Project</title>
+  <title>K.J. DIGITA - AquaSentry Case Study</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -38,7 +38,6 @@
     .font-heading {
       font-family: 'Poppins', sans-serif;
     }
-    /* Simple spinner for auth loading */
     .spinner {
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
@@ -73,7 +72,6 @@
       </nav>
       <!-- Auth Section (Login/Profile) -->
       <div id="auth-container" class="flex items-center justify-end" style="min-width: 100px;">
-        <!-- This will be replaced by script -->
         <div class="spinner"></div>
       </div>
     </header>
@@ -83,7 +81,6 @@
       <div class="flex max-w-5xl flex-1 flex-col px-4 sm:px-6">
         <!-- Toolbar for navigation -->
         <div class="mb-8 flex items-center justify-between gap-2">
-          <!-- === "BACK" LINK CONNECTED === -->
           <a class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-text-muted hover:bg-white/10 transition-colors" href="slide3-projects.html">
             <span class="material-symbols-outlined text-base">arrow_back</span>
             Back to Projects
@@ -92,96 +89,86 @@
         <!-- PageHeading -->
         <div class="mb-8 flex flex-wrap justify-between gap-4 border-b border-white/10 pb-8">
           <div class="flex min-w-72 flex-col gap-3">
-            <!-- === TITLE UPDATED === -->
-            <p class="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl font-heading">AquaSentry: Flood AI</p>
+            <p class="font-heading text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl">AquaSentry: Flood AI</p>
             <p class="text-text-muted text-base font-normal leading-normal sm:text-lg">A mobile application for real-time flood monitoring and safety alerts.</p>
           </div>
         </div>
         <!-- ButtonGroup -->
         <div class="mb-12 flex justify-start">
           <div class="flex flex-wrap gap-3">
-            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
-              <span class="material-symbols-outlined text-lg">play_circle</span>
-              <span class="truncate">Live Demo</span>
-            </button>
-            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-5 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-colors">
+            <!-- "View Code on GitHub" LINK (FIXED) -->
+            <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-5 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white/20 transition-colors" href="https://github.com/sanchitvhajage-source/AquaSentry" target="_blank" rel="noopener noreferrer">
               <svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.475 2 2 6.475 2 12C2 16.017 4.43 19.333 8.01 20.473C8.47 20.553 8.645 20.26 8.645 20.013V18.188C6.555 18.633 6.035 17.26 6.035 17.26C5.615 16.222 5.045 15.967 5.045 15.967C4.205 15.388 5.105 15.4 5.105 15.4C5.995 15.46 6.455 16.31 6.455 16.31C7.255 17.747 8.685 17.31 9.245 17.048C9.325 16.485 9.555 16.082 9.815 15.868C7.865 15.648 5.795 14.893 5.795 11.633C5.795 10.583 6.165 9.723 6.785 9.053C6.695 8.833 6.365 7.788 6.875 6.553C6.875 6.553 7.625 6.313 9.225 7.423C9.935 7.223 10.695 7.123 11.455 7.123C12.215 7.123 12.975 7.223 13.685 7.423C15.285 6.313 16.035 6.553 16.035 6.553C16.545 7.788 16.215 8.833 16.125 9.053C16.745 9.723 17.115 10.583 17.115 11.633C17.115 14.903 15.045 15.648 13.085 15.868C13.415 16.142 13.675 16.66 13.675 17.413V20.013C13.675 20.26 13.84 20.553 14.31 20.473C17.88 19.333 20.32 16.017 20.32 12C20.32 6.475 15.845 2 12 2Z"></path></svg>
               <span class="truncate">View Code on GitHub</span>
-            </button>
+            </a>
           </div>
         </div>
-        
-        <!-- === CAROUSEL UPDATED FOR MOBILE + YOUR IMAGES === -->
+        <!-- Carousel (Responsive: stacks on mobile) -->
         <div class="mb-16">
-          <!-- 
-            Responsive Carousel:
-            - On mobile (default): Stacks vertically (flex-col)
-            - On medium screens and up (md:): Becomes a horizontal scrolling container (flex-row, overflow-x-auto)
-          -->
-          <div class="flex flex-col md:flex-row md:overflow-x-auto gap-6 p-1 md:[-ms-scrollbar-style:none] md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
+          <!-- Grid container for responsive layout -->
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:overflow-x-auto sm:[-ms-scrollbar-style:none] sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
             
-            <!-- Image 1: Dashboard -->
-            <div class="flex flex-col gap-4 md:min-w-72 md:flex-1">
-              <div class="w-full aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <img class="h-full w-full object-cover" data-alt="Screenshot of the app's main dashboard showing a flood warning and safety measures." src="1000061890.jpg" />
+            <!-- Image 1 -->
+            <div class="flex flex-col gap-4 rounded-lg">
+              <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
+                <img class="h-full w-full object-cover" src="1000061890.jpg" alt="Screenshot of the app's flood dashboard showing safety measures." />
               </div>
               <div>
                 <p class="text-white text-base font-medium leading-normal">Flood Dashboard</p>
-                <p class="text-text-muted text-sm font-normal leading-normal">Main dashboard with warnings and safety options.</p>
+                <p class="text-text-muted text-sm font-normal leading-normal">Main dashboard with safety measures.</p>
               </div>
             </div>
             
-            <!-- Image 2: Safe Area -->
-            <div class="flex flex-col gap-4 md:min-w-72 md:flex-1">
-              <div class="w-full aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <img class="h-full w-full object-cover" data-alt="Screenshot of the app's map view, showing the user is in a safe area." src="1000061891.jpg" />
+            <!-- Image 2 -->
+            <div class="flex flex-col gap-4 rounded-lg">
+              <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
+                <img class="h-full w-full object-cover" src="1000061891.jpg" alt="Screenshot of the app's safe area notification." />
               </div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Safe Area View</p>
-                <p class="text-text-muted text-sm font-normal leading-normal">Predictive AI shows no immediate flood risk.</p>
+                <p class="text-white text-base font-medium leading-normal">Safe Area</p>
+                <p class="text-text-muted text-sm font-normal leading-normal">Notification screen showing no immediate risk.</p>
               </div>
             </div>
-            
-            <!-- Image 3: Safety Tips -->
-            <div class="flex flex-col gap-4 md:min-w-72 md:flex-1">
-              <div class="w-full aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <img class="h-full w-full object-cover" data-alt="Screenshot of the app's safety tips screen with risk levels." src="1000061892.jpg" />
+
+            <!-- Image 3 -->
+            <div class="flex flex-col gap-4 rounded-lg">
+              <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
+                <img class="h-full w-full object-cover" src="1000061892.jpg" alt="Screenshot of the app's safety tips and risk checker." />
               </div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Safety Tips & Risk</p>
-                <p class="text-text-muted text-sm font-normal leading-normal">Check location risk and get safety guidelines.</p>
+                <p class="text-white text-base font-medium leading-normal">Safety Tips</p>
+                <p class="text-text-muted text-sm font-normal leading-normal">Risk checker and safety guidelines.</p>
               </div>
             </div>
-            
-            <!-- Image 4: Removed as per your request -->
 
           </div>
         </div>
+        
         <!-- Project Details Grid -->
         <div class="grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-3">
           <div class="space-y-12 lg:col-span-2">
             <!-- Problem & Solution Section -->
             <section class="space-y-8">
               <div class="space-y-3">
-                <h3 class="text-2xl font-bold text-accent font-heading">The Problem</h3>
-                <p class="text-text-light leading-relaxed">Traditional flood warning systems often suffer from delays and lack the granular, real-time data needed for residents to make informed safety decisions. This communication gap can lead to significant property damage and risk to human life when evacuation routes become unclear or warnings arrive too late.</p>
+                <h3 class="font-heading text-2xl font-bold text-accent">The Problem</h3>
+                <p class="text-text-light leading-relaxed">Traditional flood warning systems often suffer from delays and lack the granular, real-time data needed for residents to make informed safety decisions. This communication gap can lead to significant property damage and risk to human life.</p>
               </div>
               <div class="space-y-3">
-                <h3 class="text-2xl font-bold text-accent font-heading">The Solution</h3>
-                <p class="text-text-light leading-relaxed">The AquaSentry App is a mobile-first platform designed to bridge this information gap. By aggregating data from official sensors and user-submitted reports, it provides hyper-local, real-time flood warnings. Its core features include an interactive safety map showing affected areas and clear evacuation routes, push notifications for immediate alerts, and a community reporting system to empower users with the latest on-the-ground information.</p>
+                <h3 class="font-heading text-2xl font-bold text-accent">The Solution</h3>
+                <p class="text-text-light leading-relaxed">AquaSentry is a mobile-first platform designed to bridge this information gap. By aggregating data from official sensors and using predictive AI, it provides hyper-local, real-time flood warnings. Its core features include an interactive safety map, push notifications, and a community reporting system.</p>
               </div>
             </section>
             <!-- Key Features Section -->
             <section>
-              <h3 class="text-2xl font-bold text-accent font-heading mb-6">Key Features</h3>
+              <h3 class="font-heading text-2xl font-bold text-accent mb-6">Key Features</h3>
               <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div class="flex items-start gap-4">
                   <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <span class="material-symbols-outlined">notifications_active</span>
                   </div>
                   <div>
-                    <h4 class="font-bold text-white">Real-time Notifications</h4>
-                    <p class="text-text-muted text-sm">Instant push alerts for your specific location based on rising water levels.</p>
+                    <h4 class="font-bold text-white">Predictive AI Alerts</h4>
+                    <p class="text-text-muted text-sm">Instant push alerts based on predictive AI models.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -190,7 +177,7 @@
                   </div>
                   <div>
                     <h4 class="font-bold text-white">Interactive Safety Map</h4>
-                    <p class="text-text-muted text-sm">View flooded areas, safe zones, and optimized evacuation routes.</p>
+                    <p class="text-text-muted text-sm">View flooded areas, safe zones, and evacuation routes.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -199,7 +186,7 @@
                   </div>
                   <div>
                     <h4 class="font-bold text-white">Community Reporting</h4>
-                    <p class="text-text-muted text-sm">Submit and view real-time reports from other users in your area.</p>
+                    <p class="text-text-muted text-sm">Submit and view real-time reports from other users.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -207,9 +194,9 @@
                     <span class="material-symbols-outlined">model_training</span>
                   </div>
                   <div>
-                    <h4 class="font-bold text-white">AI-Powered Prediction</h4>
-                    <p class="text-text-muted text-sm">Uses predictive AI to assess flood risk for your current location.</p>
-                  </div>
+                    <h4 class="font-bold text-white">AI-Powered Routes</h4>
+                    <p class="text-text-muted text-sm">Find the safest evacuation route using an AI model.</p>
+T                  </div>
                 </div>
               </div>
             </section>
@@ -217,18 +204,16 @@
           <!-- Sidebar with Role and Tech Stack -->
           <aside class="space-y-12">
             <section>
-              <h3 class="text-lg font-bold text-accent font-heading mb-4 border-b border-white/10 pb-2">My Role</h3>
-              <p class="text-text-light">Led the end-to-end UI/UX design process, from wireframing to high-fidelity prototypes. I also developed the complete front-end of the mobile application using React Native, ensuring a responsive and performant user experience across both iOS and Android platforms.</p>
+              <h3 class="font-heading text-lg font-bold text-accent mb-4 border-b border-white/10 pb-2">My Role</h3>
+              <p class="text-text-light">Led the end-to-end UI/UX design process, from wireframing to high-fidelity prototypes. I also developed the complete front-end of the mobile application using React Native, ensuring a responsive and performant user experience.</p>
             </section>
-            <!-- === TECH STACK UPDATED === -->
             <section>
-              <h3 class="text-lg font-bold text-accent font-heading mb-4 border-b border-white/10 pb-2">Tech Stack</h3>
+              <h3 class="font-heading text-lg font-bold text-accent mb-4 border-b border-white/10 pb-2">Tech Stack</h3>
               <div class="flex flex-wrap gap-3">
                 <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">React Native</span>
                 <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Firebase</span>
                 <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Python</span>
                 <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">TensorFlow</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">TypeScript</span>
                 <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Expo</span>
                 <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Figma</span>
               </div>
@@ -237,33 +222,6 @@
         </div>
       </div>
     </main>
-
-    <!-- === FOOTER WITH LINKS === -->
-    <footer class="flex flex-col gap-8 border-t border-solid border-white/10 px-5 py-10 text-center mt-16">
-        <div class="mx-auto w-full max-w-5xl">
-          <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-              <a class="text-[#9babbb] hover:text-white text-sm font-normal leading-normal transition-colors" href="privacy.html">Privacy Policy</a>
-              <a class="text-[#9babbb] hover:text-white text-sm font-normal leading-normal transition-colors" href="terms.html">Terms of Service</a>
-              <a class="text-[#9babbb] hover:text-white text-sm font-normal leading-normal transition-colors" href="slide7-contact.html">Contact Us</a>
-            </div>
-            <div class="flex justify-center gap-4">
-              <!-- Social Links (placeholders) -->
-              <a class="text-[#9babbb] hover:text-primary transition-colors" href="#">
-                <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                  <path clip-rule="evenodd" d="M19.333 0H4.667C2.089 0 0 2.089 0 4.667v14.666C0 21.911 2.089 24 4.667 24h14.666C21.911 24 24 21.911 24 19.333V4.667C24 2.089 21.911 0 19.333 0zM8.339 20.333H5V8.889h3.339v11.444zM6.667 7.556c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm13.667 12.777h-3.333v-5.556c0-1.32-.024-3.024-1.844-3.024-1.844 0-2.127 1.44-2.127 2.928v5.652H9.667V8.889h3.2v1.467h.044c.444-.844 1.533-1.733 3.156-1.733 3.378 0 3.996 2.222 3.996 5.111v5.922z" fill-rule="evenodd"></path>
-                </svg>
-              </a>
-              <a class="text-[#9babbb] hover:text-primary transition-colors" href="#">
-                <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
-                  <path clip-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.82-.26.82-.577 0-.285-.01-1.232-.015-2.234-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.217.694.825.576C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" fill-rule="evenodd"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <p class="text-[#9babbb] text-sm font-normal leading-normal mt-8 pt-8 border-t border-solid border-white/10">© 2024 K.J. DIGITA. All Rights Reserved.</p>
-        </div>
-      </footer>
   </div>
 
   <!-- === FIREBASE & AUTH SCRIPT === -->
@@ -341,8 +299,8 @@
         // User is signed in
         authContainer.innerHTML = `
           <div class="flex items-center gap-3">
-            <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + user.displayName[0]}" alt="Profile" class="w-8 h-8 rounded-full">
-            <span class="hidden sm:inline text-white text-sm font-medium">${user.displayName}</span>
+            <img src="${user.photoURL || 'https://placehold.co/32x32/067ff9/FFFFFF?text=' + (user.displayName ? user.displayName[0] : 'U')}" alt="Profile" class="w-8 h-8 rounded-full">
+            <span class="hidden sm:inline text-white text-sm font-medium">${user.displayName || 'User'}</span>
             <button id="logout-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
               <span class="truncate">Logout</span>
             </button>
@@ -371,7 +329,7 @@
         if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
           await signInWithCustomToken(auth, __initial_auth_token);
         } else if (!auth.currentUser) {
-           updateUI(null); // Explicitly show Login button if no token
+           await signInAnonymously(auth);
         }
       } catch (e) {
         console.error("Initial auth check failed:", e);
