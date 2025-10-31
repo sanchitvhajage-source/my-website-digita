@@ -45,10 +45,10 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light">
   <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-    
+
     <!-- === HEADER WITH HAMBURGER MENU (NO LOGIN) === -->
     <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
-      
+
       <!-- Logo -->
       <a href="index.html" class="flex items-center gap-4 text-white">
         <span class="material-symbols-outlined text-primary text-2xl"> hub </span>
@@ -100,6 +100,7 @@
         <!-- PageHeading -->
         <div class="mb-8 flex flex-wrap justify-between gap-4 border-b border-white/10 pb-8">
           <div class="flex min-w-72 flex-col gap-3">
+            <!-- === TITLE UPDATED === -->
             <p class="font-heading text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl">AquaSentry: Flood AI</p>
             <p class="text-text-muted text-base font-normal leading-normal sm:text-lg">A mobile application for real-time flood monitoring and safety alerts.</p>
           </div>
@@ -116,13 +117,10 @@
         </div>
         <!-- Carousel (Responsive: stacks on mobile) -->
         <div class="mb-16">
-          <!-- Grid container for responsive layout -->
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:overflow-x-auto sm:[-ms-scrollbar-style:none] sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
-            
             <!-- Image 1 -->
             <div class="flex flex-col gap-4 rounded-lg">
               <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <!-- === FILENAME CORRECTED === -->
                 <img class="h-full w-full object-cover" src="1000061890.jpg.jpeg" alt="Screenshot of the app's flood dashboard showing safety measures." />
               </div>
               <div>
@@ -130,11 +128,9 @@
                 <p class="text-text-muted text-sm font-normal leading-normal">Main dashboard with safety measures.</p>
               </div>
             </div>
-            
             <!-- Image 2 -->
             <div class="flex flex-col gap-4 rounded-lg">
               <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <!-- === FILENAME CORRECTED === -->
                 <img class="h-full w-full object-cover" src="1000061891.jpg.jpeg" alt="Screenshot of the app's safe area notification." />
               </div>
               <div>
@@ -142,11 +138,9 @@
                 <p class="text-text-muted text-sm font-normal leading-normal">Notification screen showing no immediate risk.</p>
               </div>
             </div>
-
             <!-- Image 3 -->
             <div class="flex flex-col gap-4 rounded-lg">
               <div class="w-full aspect-[9/19] sm:aspect-[3/4] overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
-                <!-- === FILENAME CORRECTED === -->
                 <img class="h-full w-full object-cover" src="1000061892.jpg.jpeg" alt="Screenshot of the app's safety tips and risk checker." />
               </div>
               <div>
@@ -154,89 +148,98 @@
                 <p class="text-text-muted text-sm font-normal leading-normal">Risk checker and safety guidelines.</p>
               </div>
             </div>
-
           </div>
         </div>
-        
+
         <!-- Project Details Grid -->
         <div class="grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-3">
           <div class="space-y-12 lg:col-span-2">
-            <!-- Problem & Solution Section -->
+            
+            <!-- === PROBLEM & SOLUTION SECTION UPDATED === -->
             <section class="space-y-8">
               <div class="space-y-3">
                 <h3 class="font-heading text-2xl font-bold text-accent">The Problem</h3>
-                <p class="text-text-light leading-relaxed">Traditional flood warning systems often suffer from delays and lack the granular, real-time data needed for residents to make informed safety decisions. This communication gap can lead to significant property damage and risk to human life.</p>
+                <p class="text-text-light leading-relaxed">Traditional flood warning systems often suffer from delays and lack the granular, reliable data needed for residents to make informed safety decisions. This communication gap, highlighted by events like the Punjab floods, can lead to significant property damage and risk to human life.</p>
               </div>
               <div class="space-y-3">
                 <h3 class="font-heading text-2xl font-bold text-accent">The Solution</h3>
-                <p class="text-text-light leading-relaxed">AquaSentry is a mobile-first platform designed to bridge this information gap. By aggregating data from official sensors and using predictive AI, it provides hyper-local, real-time flood warnings. Its core features include an interactive safety map, push notifications, and a community reporting system.</p>
+                <p class="text-text-light leading-relaxed">AquaSentry is a dedicated mobile-first platform designed to bridge this information gap. By aggregating data from official APIs and using a predictive Hybrid Dual-Model AI Architecture, it provides hyper-local, high-confidence flood warnings, minimizing cognitive load during a crisis.</p>
               </div>
             </section>
-            <!-- Key Features Section -->
+            
+            <!-- === KEY FEATURES SECTION UPDATED === -->
             <section>
               <h3 class="font-heading text-2xl font-bold text-accent mb-6">Key Features</h3>
               <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div class="flex items-start gap-4">
                   <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <span class="material-symbols-outlined">notifications_active</span>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-white">Predictive AI Alerts</h4>
-                    <p class="text-text-muted text-sm">Instant push alerts based on predictive AI models.</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <span class="material-symbols-outlined">map</span>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-white">Interactive Safety Map</h4>
-                    <p class="text-text-muted text-sm">View flooded areas, safe zones, and evacuation routes.</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <span class="material-symbols-outlined">group</span>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-white">Community Reporting</h4>
-                    <p class="text-text-muted text-sm">Submit and view real-time reports from other users.</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <span class="material-symbols-outlined">model_training</span>
                   </div>
                   <div>
-                    <h4 class="font-bold text-white">AI-Powered Routes</h4>
-                    <p class="text-text-muted text-sm">Find the safest evacuation route using an AI model.</p>
+                    <h4 class="font-bold text-white">Dual-Model Risk Alerts</h4>
+                    <p class="text-text-muted text-sm">Uses two separate logic systems (River Level and Rain Rate) to achieve high-confidence warnings.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">functions</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-white">Max-Ensemble Logic</h4>
+                    <p class="text-text-muted text-sm">Dashboard uses Math.max to show the highest potential risk on a visual 0-5ft diagram.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">task_alt</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-white">Dual-Check Threshold</h4>
+                    <p class="text-text-muted text-sm">Evacuation module uses a rigorous check (level AND rate of increase) for binary "GO" decisions.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">offline_bolt</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-white">Offline Safety Hub</h4>
+                    <p class="text-text-muted text-sm">Provides instant access to national Emergency Contacts and Safety Tips (network-resilient).</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <span class="material-symbols-outlined">route</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-white">Intelligent Evacuation Routing</h4>
+                    <p class="text-text-muted text-sm">One-tap routing using native Google Maps Intents.</p>
                   </div>
                 </div>
               </div>
             </section>
           </div>
+          
           <!-- Sidebar with Role and Tech Stack -->
           <aside class="space-y-12">
+            <!-- === MY ROLE SECTION UPDATED === -->
             <section>
               <h3 class="font-heading text-lg font-bold text-accent mb-4 border-b border-white/10 pb-2">My Role</h3>
-              <p class="text-text-light">Led the end-to-end UI/UX design process, from wireframing to high-fidelity prototypes. I also developed the complete front-end of the mobile application using React Native, ensuring a responsive and performant user experience.</p>
+              <p class="text-text-light">I led the full end-to-end development and architectural design of the AquaSentry system. I designed the Hybrid Dual-Model Architecture and developed the complete native Android application in Java using Android Studio. My implementation focused on concurrency management for stable data fetching and engineering low-level network resilience for older devices.</p>
             </section>
-            
+
             <!-- === TECH STACK UPDATED === -->
             <section>
               <h3 class="font-heading text-lg font-bold text-accent mb-4 border-b border-white/10 pb-2">Tech Stack</h3>
               <div class="flex flex-wrap gap-3">
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Osmdroid Map</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Google Map Redirect</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Predictive AI</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Open-meteo pluvial</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Open-meteo rainfall</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">community reporting(future update)</span>
-                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Multilingual UI(future update)</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Platform: Native Android (Java)</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Architecture: Dual-Model Logic & Java ExecutorService</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Fluvial Risk: Open-Meteo Flood (GloFAS)</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Pluvial Risk: Open-Meteo Weather (Precipitation)</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Routing: Google Maps Intent Redirection</span>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-text-light">Stability: Custom TLS1.2 SocketFactory</span>
               </div>
             </section>
-            <!-- === END OF TECH STACK === -->
-            
           </aside>
         </div>
       </div>
@@ -248,7 +251,7 @@
     // --- Hamburger Menu Toggle ---
     const toggleButton = document.getElementById("mobile-menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
-    
+
     if (toggleButton && mobileMenu) {
       toggleButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
@@ -263,19 +266,4 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
