@@ -39,10 +39,10 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-300">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-        
+
         <!-- === HEADER WITH HAMBURGER MENU (NO LOGIN) === -->
         <header class="sticky top-0 z-50 flex flex-wrap items-center justify-between whitespace-nowrap border-b border-solid border-white/10 bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
-            
+
             <!-- Logo -->
             <a href="index.html" class="flex items-center gap-4 text-white">
                 <span class="material-symbols-outlined text-primary text-2xl"> hub </span>
@@ -80,42 +80,20 @@
             </div>
         </header>
         <!-- === END OF HEADER === -->
-        
+
         <!-- Main Content -->
         <main class="flex flex-1 justify-center px-4 py-10 sm:px-6 md:px-10 lg:px-20 xl:px-40">
             <div class="layout-content-container flex w-full max-w-[1200px] flex-1 flex-col">
-                
+
                 <!-- Upcoming Events Section -->
                 <div class="mb-16">
                     <h2 class="font-heading text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl px-4 pb-6 pt-5">Upcoming Events</h2>
-                    <div class="grid grid-cols-1 gap-6 p-4 md:grid-cols-2">
-                        
-                        <!-- Event 1: Nov 10 -->
-                        <div class="flex flex-col items-stretch justify-start rounded-xl border border-white/10 bg-[#0F1E38]/50 p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
-                            <div class="flex justify-between items-center mb-3">
-                                <h3 class="font-heading text-2xl font-bold text-white">Library and packages in Java/Python</h3>
-                                <span class="flex-shrink-0 rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">Nov 10</span>
-                            </div>
-                            <p class="text-gray-400 mb-6">Explore the essential libraries and packages that power modern Java and Python development. A must-attend for aspiring developers.</p>
-                            <!-- === REGISTER BUTTON 1 (MAILTO LINK) === -->
-                            <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-[#0A192F] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105 mt-auto" 
-                               href="mailto:kj.digita.club@gmail.com?subject=Register%20for%20Event%20-%20November%2010&body=I%20am%20interested%20and%20willing%20to%20participate%20in%20the%20event%3A%20%22Library%20and%20packages%20in%20Java%2FPython%22.">
-                                <span class="truncate">Register Now</span>
-                            </a>
-                        </div>
-
-                        <!-- Event 2: Nov 15 -->
-                        <div class="flex flex-col items-stretch justify-start rounded-xl border border-white/10 bg-[#0F1E38]/50 p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
-                            <div class="flex justify-between items-center mb-3">
-                                <h3 class="font-heading text-2xl font-bold text-white">Solving basic problem with code</h3>
-                                <span class="flex-shrink-0 rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">Nov 15</span>
-                            </div>
-                            <p class="text-gray-400 mb-6">Learn foundational problem-solving techniques and apply them to write your first programs. Perfect for beginners.</p>
-                            <!-- === REGISTER BUTTON 2 (MAILTO LINK) === -->
-                            <a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-[#0A192F] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105 mt-auto" 
-                               href="mailto:kj.digita.club@gmail.com?subject=Register%20for%20Event%20-%20November%2015&body=I%20am%20interested%20and%20willing%20to%20participate%20in%20the%20event%3A%20%22Solving%20basic%20problem%20with%20code%22.">
-                                <span class="truncate">Register Now</span>
-                            </a>
+                    <div class="px-4">
+                        <!-- Empty State Message -->
+                        <div class="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-[#0F1E38]/30 p-10 text-center">
+                            <span class="material-symbols-outlined text-4xl text-gray-500 mb-2">event_busy</span>
+                            <p class="text-gray-400 text-lg">No upcoming events scheduled at the moment.</p>
+                            <p class="text-gray-500 text-sm mt-1">Check back soon for updates!</p>
                         </div>
                     </div>
                 </div>
@@ -124,8 +102,26 @@
                 <div>
                     <h2 class="font-heading text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl px-4 pb-6 pt-5">Past Events</h2>
                     <div class="grid grid-cols-1 gap-6 p-4 md:grid-cols-2">
-                        
-                        <!-- Event 3: Ended -->
+
+                        <!-- Moved Event 1: Nov 15 -->
+                        <div class="flex flex-col items-stretch justify-start rounded-xl border border-white/10 bg-[#0F1E38]/50 p-6 opacity-60">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="font-heading text-2xl font-bold text-white">Solving basic problem with code</h3>
+                                <span class="flex-shrink-0 rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-gray-300">Ended</span>
+                            </div>
+                            <p class="text-gray-400 mb-6">Learn foundational problem-solving techniques and apply them to write your first programs. Perfect for beginners.</p>
+                        </div>
+
+                        <!-- Moved Event 2: Nov 10 -->
+                        <div class="flex flex-col items-stretch justify-start rounded-xl border border-white/10 bg-[#0F1E38]/50 p-6 opacity-60">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="font-heading text-2xl font-bold text-white">Library and packages in Java/Python</h3>
+                                <span class="flex-shrink-0 rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-gray-300">Ended</span>
+                            </div>
+                            <p class="text-gray-400 mb-6">Explore the essential libraries and packages that power modern Java and Python development. A must-attend for aspiring developers.</p>
+                        </div>
+
+                        <!-- Event 3: Existing Past Event -->
                         <div class="flex flex-col items-stretch justify-start rounded-xl border border-white/10 bg-[#0F1E38]/50 p-6 opacity-60">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="font-heading text-2xl font-bold text-white">Introduction to Coding</h3>
@@ -134,7 +130,7 @@
                             <p class="text-gray-400">A foundational workshop covering the basics of programming logic, syntax, and writing your first line of code.</p>
                         </div>
 
-                        <!-- Event 4: Ended -->
+                        <!-- Event 4: Existing Past Event -->
                         <div class="flex flex-col items-stretch justify-start rounded-xl border border-white/10 bg-[#0F1E38]/50 p-6 opacity-60">
                             <div class="flex justify-between items-center mb-3">
                                 <h3 class="font-heading text-2xl font-bold text-white">Languages used for coding</h3>
@@ -148,7 +144,7 @@
             </div>
         </main>
 
-        <!-- Footer (now linked) -->
+        <!-- Footer -->
         <footer class="flex w-full flex-col gap-6 px-5 py-10 text-center @container mt-16 border-t border-solid border-t-[#27303a]">
             <div class="mx-auto w-full max-w-5xl">
                 <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
@@ -159,7 +155,7 @@
                     </div>
                     <div class="flex justify-center gap-4">
                         <a class="text-gray-400 hover:text-primary transition-colors" href="#">
-                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M19.333 0H4.667C2.089 0 0 2.089 0 4.667v14.666C0 21.911 2.089 24 4.667 24h14.666C21.911 24 24 21.911 24 19.333V4.667C24 2.089 21.911 0 19.333 0zM8.339 20.333H5V8.889h3.339v11.444zM6.667 7.556c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm13.667 12.777h-3.333v-5.556c0-1.32-.024-3.024-1.844-3.024-1.844 0-2.127 1.44-2.127 2.928v5.652H9.667V8.889h3.2v1.467h.044c.444-.844 1.533-1.733 3.156-1.733 3.378 0 3.996 2.222 3.996 5.111v5.922z" fill-rule="evenodd"></Shorter>
+                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M19.333 0H4.667C2.089 0 0 2.089 0 4.667v14.666C0 21.911 2.089 24 4.667 24h14.666C21.911 24 24 21.911 24 19.333V4.667C24 2.089 21.911 0 19.333 0zM8.339 20.333H5V8.889h3.339v11.444zM6.667 7.556c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm13.667 12.777h-3.333v-5.556c0-1.32-.024-3.024-1.844-3.024-1.844 0-2.127 1.44-2.127 2.928v5.652H9.667V8.889h3.2v1.467h.044c.444-.844 1.533-1.733 3.156-1.733 3.378 0 3.996 2.222 3.996 5.111v5.922z" fill-rule="evenodd"></path>
                         </a>
                         <a class="text-gray-400 hover:text-primary transition-colors" href="#">
                             <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -176,14 +172,12 @@
 
     <!-- === Minimal Hamburger Menu Script (NO LOGIN) === -->
     <script type="module">
-      // --- Hamburger Menu Toggle ---
       const toggleButton = document.getElementById("mobile-menu-toggle");
       const mobileMenu = document.getElementById("mobile-menu");
-      
+
       if (toggleButton && mobileMenu) {
         toggleButton.addEventListener("click", () => {
           mobileMenu.classList.toggle("hidden");
-          // Change icon to 'close' when open
           if (mobileMenu.classList.contains("hidden")) {
             toggleButton.innerHTML = `<span class="material-symbols-outlined">menu</span>`;
           } else {
@@ -194,3 +188,4 @@
     </script>
 </body>
 </html>
+
